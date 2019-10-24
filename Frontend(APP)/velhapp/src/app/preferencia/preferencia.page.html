@@ -6,20 +6,18 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <div class="card" style="background-image: url('https://www.conjur.com.br/img/b/bingo5.jpeg');"></div>
-          <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-button (click)="Cadastrar()">Confirma</ion-button>
-      </ion-col>
-    </ion-row>
+      <ion-row *ngFor="let item of checkBoxList">
+        <ion-col>
+          <ion-card (click)="checkEvent()">
+            <div class="card" style="background-image: url('https://www.conjur.com.br/img/b/bingo5.jpeg');"></div>
+            <ion-card-header>
+              <ion-item lines="none">
+                <ion-label>{{ item.value }}</ion-label>
+                <ion-checkbox color="dark" [(ngModel)]="item.isChecked" (click)="checkEvent(item.value)"></ion-checkbox>
+              </ion-item>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
   </ion-grid>
 </ion-content>
