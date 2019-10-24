@@ -1,0 +1,29 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu type="overlay">
+      <ion-content>
+        <div>
+          <div class="background"></div>
+          <div class="avatar">
+            <ion-avatar>
+              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+            </ion-avatar>
+          </div>
+        </div>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-card class="cardMenu" [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-item class="MenuCard" lines="none">
+                <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                <ion-card-header>
+                  <ion-card-title>{{p.title}}</ion-card-title>
+                </ion-card-header>
+              </ion-item>
+            </ion-card>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

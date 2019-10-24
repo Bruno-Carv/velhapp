@@ -1,0 +1,27 @@
+ion-toolbar{
+    --background: #6bc5e9;
+}
+
+.cardMenu{
+    font-size: 20px;
+}
+
+.MenuCard{
+    margin-top: 13px;
+    margin-bottom: 13px;
+}
+
+.background{
+    background: #6bc5e9;
+    height: 80px;
+    z-index: 1;
+}
+
+.avatar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    margin-top: -40px;
+}
