@@ -21,6 +21,9 @@ module.exports = {
      * @return {JSON} 
      */
     async create(request, response){
+        let ddd = request.body.ddd;
+        let tel = request.body.tel;
+        console.log(ddd + '  ' + tel);
         return response.json('create');
         banco.query('INSERT INTO <tabela> VALUES (?)',[],(err, result, fields) => {
 
