@@ -10,6 +10,8 @@ import { ApiNodeService } from '../../service/api-node.service';
 export class MainPage implements OnInit {
 
   public Eventos;
+  
+  pesquisaEvento: string;
 
   constructor(
     private menu: MenuController,
@@ -30,5 +32,12 @@ export class MainPage implements OnInit {
       event.target.complete();
       event.target.disabled = true;
     }, 500);
+  }
+
+  pesquisaEventos(){
+    this.api.PesquisaEvento(this.pesquisaEvento).then((result) => {
+      let data = JSON.parse(result.data);
+      this.Eventos = data;
+    });
   }
 }

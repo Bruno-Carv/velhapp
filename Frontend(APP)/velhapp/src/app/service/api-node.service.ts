@@ -51,4 +51,8 @@ export class ApiNodeService {
     };
     return this.http.put(this.API_url + '/put?apikey=' + this.Key, data, headers);
   }
+
+  PesquisaEvento(evento){
+    return this.http.get(this.API_url+'/get?id='+evento+'&apiKey='+this.Key,{},{});
+  }
 }
