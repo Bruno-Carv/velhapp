@@ -26,7 +26,6 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.statusBar.backgroundColorByHexString('#fff');
-      this.splashScreen.hide();
       this.secureStorage.create('velhapp')
         .then((storage: SecureStorageObject) => {
           storage.get('Idoso')
@@ -35,6 +34,7 @@ export class AppComponent {
               error => console.log(error)
             );
         });
+      this.splashScreen.hide();
     });
   }
 }

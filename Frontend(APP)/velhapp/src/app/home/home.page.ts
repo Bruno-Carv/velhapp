@@ -21,6 +21,14 @@ export class HomePage {
       private api: ApiNodeService
     ) {
     this.menu.enable(false, 'menuIdoso');
+    this.secureStorage.create('velhapp')
+      .then((storage: SecureStorageObject) => {
+        storage.get('Idoso')
+          .then(
+            data => this.router.navigate(['/main']),
+            error => console.log(error)
+          );
+      });
   }
 
   ngOnInit() {
@@ -50,7 +58,7 @@ export class HomePage {
       */
       this.secureStorage.create('velhapp')
         .then((storage: SecureStorageObject) => {
-          storage.set('Idoso','key')
+          storage.set('Idoso', 'key')
             .then(
               data => this.router.navigate(['/main']),
               error => console.log(error)
