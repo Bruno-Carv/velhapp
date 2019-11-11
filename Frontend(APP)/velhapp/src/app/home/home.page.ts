@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
-
+import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage/ngx';
+import { ApiNodeService } from '../service/api-node.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,16 +10,16 @@ import { MenuController } from '@ionic/angular';
 })
 export class HomePage {
 
-  isLogin: boolean = true;//Menu
   ddd: string;
   tel: string;
 
   constructor
-  (
-    private router: Router,
-    private menu: MenuController,
-  ) 
-  {
+    (
+      private router: Router,
+      private menu: MenuController,
+      private secureStorage: SecureStorage,
+      private api: ApiNodeService
+    ) {
     this.menu.enable(false, 'menuIdoso');
   }
 
@@ -31,9 +32,19 @@ export class HomePage {
   }
 
 
-  SignUp(){
-    if(this.ddd.length > 0 && this.tel.length > 0){
-      this.router.navigate(['/main']);
+  SignUp() {
+    if (this.ddd.length > 0 && this.tel.length > 0) {
+      this.api.SignUp(this.ddd,this.tel).then((result) => {
+        this.secureStorage.create('velhapp')
+        .then((storage: SecureStorageObject) => {
+          storage.set('Idoso', result.data)
+            .then(
+              data => console.log(data),
+              error => console.log(error)
+            );
+        });
+        this.router.navigate(['/main']);
+      }) 
     }
   }
 
