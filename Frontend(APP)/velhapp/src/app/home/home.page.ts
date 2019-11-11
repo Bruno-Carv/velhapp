@@ -39,12 +39,13 @@ export class HomePage {
         .then((storage: SecureStorageObject) => {
           storage.set('Idoso', result.data)
             .then(
-              data => console.log(data),
+              data => this.router.navigate(['/main']),
               error => console.log(error)
             );
         });
-        this.router.navigate(['/main']);
-      }) 
+      }).catch((err) => {
+        
+      })
     }
   }
 
