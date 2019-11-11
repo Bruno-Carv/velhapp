@@ -28,8 +28,8 @@ export class ApiNodeService {
     return this.http.post(this.API_url + '/post?apikey=' + this.Key,data,headers);
   }
 
-  ListaEventos(preferencias: JSON) {
-    return this.http.get(this.API_url + '/get?apikey=' + this.Key, preferencias, {});
+  ListaEventos(id/*preferencias: JSON*/) {
+    return this.http.get(this.API_url + '/get?id='+id+'&apikey=' + this.Key, {}, {});
   }
 
   DeletarFavoritos(id: Int8Array) {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { ApiNodeService } from '../../service/api-node.service';
 
 @Component({
   selector: 'app-main',
@@ -8,26 +9,11 @@ import { MenuController } from '@ionic/angular';
 })
 export class MainPage implements OnInit {
 
-  public Eventos = [{
-    src:'https://www.clickfozdoiguacu.com.br/wp-content/uploads/2017/09/nosso-canto-1200x628-1024x536.png',
-    nome: 'Bingo'
-  },
-  {
-    src:'https://www.clickfozdoiguacu.com.br/wp-content/uploads/2017/09/nosso-canto-1200x628-1024x536.png',
-    nome: 'Bingo'
-  },
-  {
-    src:'https://www.clickfozdoiguacu.com.br/wp-content/uploads/2017/09/nosso-canto-1200x628-1024x536.png',
-    nome: 'Bingo'
-  },
-  {
-    src:'https://www.clickfozdoiguacu.com.br/wp-content/uploads/2017/09/nosso-canto-1200x628-1024x536.png',
-    nome: 'Bingo'
-  },
-  ]
+  public Eventos;
 
   constructor(
     private menu: MenuController,
+    private api: ApiNodeService,
   ) {
     this.menu.enable(true, 'menuIdoso');
   }
@@ -37,6 +23,10 @@ export class MainPage implements OnInit {
 
   loadData(event) {
     setTimeout(() => {
+      this.api.ListaEventos('1').then((result) => {
+        result = JSON.parse(result.data);
+        this.Eventos = result;
+      })
       event.target.complete();
       event.target.disabled = true;
     }, 500);

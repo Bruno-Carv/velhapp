@@ -34,6 +34,7 @@ export class HomePage {
 
   SignUp() {
     if (this.ddd.length > 0 && this.tel.length > 0) {
+      /*
       this.api.SignUp(this.ddd,this.tel).then((result) => {
         this.secureStorage.create('velhapp')
         .then((storage: SecureStorageObject) => {
@@ -46,6 +47,15 @@ export class HomePage {
       }).catch((err) => {
         
       })
+      */
+      this.secureStorage.create('velhapp')
+        .then((storage: SecureStorageObject) => {
+          storage.set('Idoso','key')
+            .then(
+              data => this.router.navigate(['/main']),
+              error => console.log(error)
+            );
+        });
     }
   }
 

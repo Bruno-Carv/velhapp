@@ -63,7 +63,12 @@ module.exports = {
     async read(request, response){
         
         let id = request.query.id;
-        return response.json(id);
+        let data = [{
+            'src': '',
+            'nome':'bingo'
+        }];
+        console.log(id);
+        return response.json(data);
         
         banco.query('SELECT <dados> FROM <tabela> WHERE <condição> = ?',[],(err, result, fields) => {
             
