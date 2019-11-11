@@ -1,0 +1,25 @@
+<ion-header no-shadow no-border>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-list></ion-list>
+
+  <!-- Infinite scroll -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ion-footer no-shadow no-border mode="ios">
+  <ion-card class="footerNav">
+    <ion-toolbar class="divPesquisa">
+      <ion-buttons slot="end" class="btnMenu">
+        <ion-menu-button color="light"></ion-menu-button>
+      </ion-buttons>
+      <ion-searchbar showCancelButton="never" animated debounce="500" color="light" mode="ios"></ion-searchbar>
+    </ion-toolbar>
+  </ion-card>
+</ion-footer>
