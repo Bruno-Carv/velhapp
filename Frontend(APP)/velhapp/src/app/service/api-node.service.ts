@@ -9,13 +9,15 @@ export class ApiNodeService {
   constructor
     (
       private http: HTTP,
-  ) { }
+  ) 
+  {
+    this.http.setDataSerializer('json');
+  }
 
   private API_url = 'http://192.168.0.53:3333';
   private Key = '6d4855307e312e716338354c2b4f3e756b7a4b586222365e2f24287a70';
 
   SignUp(DDD: string, Telefone: string) {
-    this.http.setDataSerializer('json');
     let data = {
       'ddd': DDD,
       'tel': Telefone
@@ -31,10 +33,22 @@ export class ApiNodeService {
   }
 
   DeletarFavoritos(id: Int8Array) {
-    return this.http.delete(this.API_url + '/delete?apikey=' + this.Key, {}, {});
+    let data = {
+      'id': id,
+    };
+    let headers = {
+      'Content-Type': 'application/json'
+    };
+    return this.http.delete(this.API_url + '/delete?apikey=' + this.Key, data, headers);
   }
 
   AtualizarPreferencia(preferencias: JSON) {
-    return this.http.put(this.API_url + '/put?apikey=' + this.Key, preferencias, {});
+    let data = {
+      'pref': preferencias,
+    };
+    let headers = {
+      'Content-Type': 'application/json'
+    };
+    return this.http.put(this.API_url + '/put?apikey=' + this.Key, data, headers);
   }
 }
