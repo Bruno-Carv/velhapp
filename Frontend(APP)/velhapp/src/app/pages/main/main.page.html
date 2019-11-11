@@ -2,9 +2,9 @@
 
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
 
-  <ion-list>
+  <ion-list class="conteudo">
     <ion-item *ngFor="let Evento of Eventos" lines="none">
       <ion-card>
         <img src="{{Evento.src}}" />
@@ -19,13 +19,13 @@
   </ion-list>
 
   <!-- Infinite scroll -->
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" class="conteudo">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>
 
-<ion-footer no-shadow no-border mode="ios">
+<ion-footer translucent no-shadow no-border>
   <ion-card class="footerNav">
     <ion-toolbar class="divPesquisa">
       <ion-buttons slot="end" class="btnMenu">
