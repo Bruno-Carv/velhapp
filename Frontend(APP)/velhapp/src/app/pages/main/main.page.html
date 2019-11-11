@@ -4,7 +4,19 @@
 
 <ion-content>
 
-  <ion-list></ion-list>
+  <ion-list>
+    <ion-item *ngFor="let Evento of Eventos" lines="none">
+      <ion-card>
+        <img src="{{Evento.src}}" />
+        <ion-card-subtitle>
+
+        </ion-card-subtitle>
+        <ion-card-title>
+          {{Evento.nome}}
+        </ion-card-title>
+      </ion-card>
+    </ion-item>
+  </ion-list>
 
   <!-- Infinite scroll -->
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
