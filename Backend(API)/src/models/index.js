@@ -65,7 +65,10 @@ module.exports = {
         let id = request.query.id;
         let data = [{
             'src': '',
-            'nome':'bingo'
+            'tipo':'',
+            'nome':'bingo',
+            'empresa':'',
+            'local':''
         }];
         console.log(id);
         return response.json(data);
