@@ -1,7 +1,0 @@
-{
-  "name": "velhapp",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}
